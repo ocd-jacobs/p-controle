@@ -13,6 +13,9 @@ Sub Main
 	Client.RunIDEAScriptEx  "10_4_DKNB_LFAI.iss", strJaar, strMaand, "", ""	
 	
 	Client.RunIDEAScriptEx  "11_Toevoegen_DK.iss", strJaar, strMaand, "", ""
+	
+Exit Sub
+
 	Client.RunIDEAScriptEx  "12_Uitsluiten_RVDR.iss", strJaar, strMaand, "", ""
 	Client.RunIDEAScriptEx  "13_Aansluit_Totalen.iss", strJaar, strMaand, "", ""
 	Client.RunIDEAScriptEx  "14_Aanv_Object.iss", strJaar, strMaand, "", ""

@@ -17,7 +17,7 @@ Function AccessImport(strJaar, strMaand)
 	task.InputFileName = "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\Process_Onverdicht.MDB"
 	task.OutputFileNamePrefix = "Process"
 	task.CreateRecordNumberField = False
-	task.DetermineMaximumCharacterFieldLengths = 10000
+	task.DetermineMaximumCharacterFieldLengths = SCAN_ALL
 	task.AddTable("Onverdicht_KP")
 	task.PerformTask
 	dbName = task.OutputFileNameFromTableName("Onverdicht_KP")

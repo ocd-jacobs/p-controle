@@ -33,7 +33,7 @@ Sub Main
 		Client.RunIDEAScriptEx  "00_2_Startup.iss", strJaar, strMaand, "", ""
 	End If
 
-	Kill "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\Onverdicht.mdb"
-	Kill "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\KP.mdb"
-	Kill "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\Onverdicht.csv"
+	'Kill "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\Onverdicht.mdb"
+	'Kill "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\KP.mdb"
+	'Kill "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\Onverdicht.csv"
 End Sub

@@ -22,7 +22,7 @@ Function FieldManipulationAppendFields
 	field.Length = 7
 	task.AppendField field
 	Set field = table.NewField
-	eqn = "@if(@len(@trim(LC_KSTR2)) > 0 ; LC_KSTR2 ; LC_KSTAR)"
+	eqn = "@if(@len(@trim(LC_GROOTBOEKREKENING_2_CENTRAAL)) > 0 ; LC_GROOTBOEKREKENING_2_CENTRAAL ; LC_GROOTBOEKREKENING)"
 	field.Name = "VERDICHTNGS_KS"
 	field.Description = ""
 	field.Type = WI_VIRT_CHAR

@@ -12,7 +12,6 @@ End Sub
 Function JoinDatabase
 	Set db = Client.OpenDatabase("Onverdicht_KP_LC_Aanv.IMD")
 	Set task = db.JoinDatabase
-	'task.FileToJoin "Tot-DienstKantorenBoek.IMD"
 	task.FileToJoin "Tot-DienstKantorenBoek.IMD"
 	task.IncludeAllPFields
 	task.IncludeAllSFields

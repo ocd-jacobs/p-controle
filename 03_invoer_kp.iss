@@ -3,14 +3,21 @@ Sub Main
 	strMaand = arg2
 
 	Client.workingDirectory = "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand 
-	Call ReportReaderImport(strJaar, strMaand)	'F:\2009\P-2009\11_Nov\KP.txt
+	Call ExcelImport()	'F:\2013\P-2013\01_Jan\PKSTNPLTS.xls
 	Client.RefreshFileExplorer 
 End Sub
 
-
-' Bestand - Import Assistent: Report Reader
-Function ReportReaderImport(strJaar, strMaand)
-	dbName = "KP.IMD"
-	Client.ImportPrintReport "F:\" & strJaar & "\P-" & strJaar & "\KP - T9AI08.jpm", "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\KP.txt", dbname, FALSE
-	Client.OpenDatabase (dbName)
+Function ExcelImport
+	Set task = Client.GetImportTask("ImportExcel")
+	dbName = Client.LocateInputFile (Client.workingDirectory & "\" & "PKSTNPLTS.xls")
+	'dbName = Client.LocateInputFile ("F:\" & strJaar & "\P-" & strJaar & "\" & strMaand  & "\" & "PKSTNPLTS.xls")
+	task.FileToImport = dbName
+	task.SheetToImport = "Export Worksheet"
+	task.OutputFilePrefix = "PKSTNPLTS"
+	task.FirstRowIsFieldName = "TRUE"
+	task.EmptyNumericFieldAsZero = "FALSE"
+	task.PerformTask
+	dbName = task.OutputFilePath("Export Worksheet")
+	Set task = Nothing
+	Client.OpenDatabase(dbName)
 End Function

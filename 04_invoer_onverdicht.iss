@@ -3,14 +3,34 @@ Sub Main
 	strMaand = arg2
 
 	Client.workingDirectory = "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand 
-	Call TextImport(strJaar, strMaand)	'F:\2009\P-2009\12_Dec\onverdicht_0210_20091001_20091021-022456-000.csv
+	Call ReportReaderImport(strJaar, strMaand)	'F:\2013\P-2013\01_Jan\onverdicht.txt
+	Call FieldManipulationAppendFields()	'onverdicht.IMD
 	Client.RefreshFileExplorer 
 End Sub
 
-
-' Bestand - Import Assistent: Vaste Lengte Tekst
-Function TextImport(strJaar, strMaand)
-	dbName = "Onverdicht.IMD"
-	Client.ImportDatabase "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\Onverdicht.csv", dbName, FALSE, FALSE, "",  "F:\" & strJaar & "\P-" & strJaar & "\onverdicht_0905.RDF"
+Function ReportReaderImport(strJaar, strMaand)
+	dbName = "onverdicht.IMD"
+	Client.ImportPrintReport "F:\" & strJaar & "\P-" & strJaar & "\" &"onverdicht.jpm", Client.workingDirectory & "onverdicht.csv", dbname, FALSE
+	'Client.ImportPrintReport "F:\" & strJaar & "\P-" & strJaar & "\" &"onverdicht.jpm", Client.workingDirectory & "onverdicht.txt", dbname, FALSE
 	Client.OpenDatabase (dbName)
 End Function
+
+Function FieldManipulationAppendFields
+	Set db = Client.OpenDatabase("onverdicht.IMD")
+	Set task = db.TableManagement
+	Set table = db.TableDef
+	Set field = table.NewField
+	eqn = "@if(@right(BETRG_T;1) <> ""-""; @Val(@replace(BETRG_T;""."";"",""));  @Val(@replace(@replace(BETRG_T;""."";"","");""-"";"""")) * -1)"
+	field.Name = "BETRG"
+	field.Description = ""
+	field.Type = WI_VIRT_NUM
+	field.Equation = eqn
+	field.Decimals = 2
+	task.AppendField field
+	task.PerformTask
+	Set task = Nothing
+	Set db = Nothing
+	Set table = Nothing
+	Set field = Nothing
+End Function
+

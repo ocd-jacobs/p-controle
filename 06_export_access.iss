@@ -22,7 +22,7 @@ End Function
 
 ' Bestand - Database Exporteren: MDB2000
 Function ExportDatabaseMDB20001(strJaar, strMaand)
-	Set db = Client.OpenDatabase("KP.IMD")
+	Set db = Client.OpenDatabase("PKSTNPLTS-Export Worksheet.IMD")
 	Set task = db.ExportDatabase
 	task.IncludeAllFields
 	eqn = ""

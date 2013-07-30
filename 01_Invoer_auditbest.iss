@@ -27,7 +27,8 @@ Sub Main
 	task.PerformTask
 	
 	Client.RunAtServer False
-	Set db = Client.OpenDatabase ("F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\Tot-tblQryStamgegevens.IMD")
+	Set db = Client.OpenDatabase (client.workingDirectory & "\" & "Tot-tblQryStamgegevens.IMD")
+	'Set db = Client.OpenDatabase ("F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\Tot-tblQryStamgegevens.IMD")
 	' Sluit huidige database
 	db.Close	
 	Client.RefreshFileExplorer 
