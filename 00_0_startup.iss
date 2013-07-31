@@ -1,6 +1,6 @@
 Sub Main
 	strJaar = "2013"
-	strMaand = "01_Jan"
+	strMaand = "06_Jun"
 	
 	strSource = "F:\" & strJaar & "\P-" & strJaar & "\Process_Onverdicht.mdb"
 	strDestination = "F:\" & strJaar & "\P-" & strJaar & "\" & strMaand & "\Process_Onverdicht.mdb"

@@ -11,7 +11,6 @@ End Sub
 Function ReportReaderImport(strJaar, strMaand)
 	dbName = "onverdicht.IMD"
 	Client.ImportPrintReport "F:\" & strJaar & "\P-" & strJaar & "\" &"onverdicht.jpm", Client.workingDirectory & "onverdicht.csv", dbname, FALSE
-	'Client.ImportPrintReport "F:\" & strJaar & "\P-" & strJaar & "\" &"onverdicht.jpm", Client.workingDirectory & "onverdicht.txt", dbname, FALSE
 	Client.OpenDatabase (dbName)
 End Function
 
